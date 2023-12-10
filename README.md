@@ -1,5 +1,5 @@
 # Tubes_Strukdat
-Membuat aplikasi dengan topik Pembeli dan Belanjaan dengan mengimplementasikan Multi Linked List.
+Membuat program sederhana dengan topik Pembeli dan Belanjaan dengan mengimplementasikan Multi Linked List.
 
 Program ini dibuat menggunakan bahasa C++
 
