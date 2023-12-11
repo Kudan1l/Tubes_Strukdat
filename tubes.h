@@ -12,8 +12,6 @@ struct Konsumen {
     string nama;
     string alamat;
     string id;
-    int jumlah_produk;
-    int total_belanja;
 };
 
 struct Produk {
@@ -32,21 +30,21 @@ typedef struct elemenProduk *adr_produk;
 
 typedef struct elemenKonsumen *adr_konsumen;
 
-typedef Konsumen infokonsum;
+typedef Konsumen infoKonsumen;
 
-typedef Produk infoproduk;
+typedef Produk infoProduk;
 
 struct elemenKonsumen {
-    infokonsum info;
+    infoKonsumen info;
     adr_konsumen next;
 };
 
 struct elemenProduk {
-    infoproduk info;
+    infoProduk info;
     adr_produk next;
 };
 
-struct ListKonsum {
+struct ListKonsumen {
     adr_konsumen first;
 };
 
@@ -54,12 +52,12 @@ struct ListProduk {
     adr_produk first;
 };
 
-void createListKonsumen(ListKonsum &K);
+void createListKonsumen(ListKonsumen &K);
 void createListProduk(ListProduk &P);
-adr_konsumen createElemenKonsumen(infokonsum a);
-// adr_produk insertData_Produk(infoproduk b);
-void insertLastKonsumen(ListKonsum &K, adr_konsumen addKonsumen);
-void showAllKonsumen(ListKonsum K);
+adr_konsumen createElemenKonsumen(infoKonsumen a);
+void insertLastKonsumen(ListKonsumen &K, adr_konsumen addKonsumen);
+void showAllKonsumen(ListKonsumen K);
+void searchKonsumen(ListKonsumen K, string ID);
 /*
 void ShowAllData_parent(ListKonsum K, ListProduk P);
 void DeleteData();

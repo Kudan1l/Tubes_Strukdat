@@ -2,9 +2,9 @@
 
 int main()
 {
-    ListKonsum K;
-    string nama, alamat;
-    infokonsum Konsumen;
+    ListKonsumen K;
+    string nama, alamat, ID;
+    infoKonsumen Konsumen;
 
     int n, nKonsumen;
 
@@ -40,7 +40,8 @@ int main()
         cin >> pilihan;
         cout << endl;
 
-        if (pilihan == 1) {
+       switch (pilihan) {
+        case 1: // Memnambahkan Konsumen
             cout << "Data Konsumen" << endl;
             cout << "Nama\t\t: ";
             cin >> Konsumen.nama;
@@ -50,13 +51,23 @@ int main()
             cin >> Konsumen.alamat;
             cout << endl;
             insertLastKonsumen(K, createElemenKonsumen(Konsumen));
-        } else if (pilihan == 2) {
+            break;
+        case 2: // Menampilkan Semua Konsumen
             showAllKonsumen(K);
-        } else if (pilihan == 3) {
+            break;
+        case 3: // Mencari Konsumen Menggunakan ID
+            cout << "---------- Cari Konsumen ----------" << endl;
+            cout << "Masukan ID\t: ";
+            cin >> ID;
+            cout << endl;
+            searchKonsumen(K, ID);
+            break;
+        case 4: // Program Selesai
             cout << "Terima Kasih" << endl;
             cek = false;
-        } else {
+            break;
+        default:
             cout << "Pilihan tidak tersedia" << endl;
-        }
+       }
     }
 }
