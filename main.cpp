@@ -3,8 +3,10 @@
 int main()
 {
     ListKonsumen K;
+    ListProduk P;
     string nama, alamat, ID;
     infoKonsumen Konsumen;
+    infoProduk produk;
 
     int n, nKonsumen;
 
@@ -32,6 +34,7 @@ int main()
 
     */
     createListKonsumen(K);
+    createListProduk(P);
 
     bool cek = true;
     while (cek) {
@@ -62,12 +65,29 @@ int main()
             cout << endl;
             searchKonsumen(K, ID);
             break;
-        case 4: // Program Selesai
-            cout << "Terima Kasih" << endl;
+        case 4: // Menambahkan data produk
+            cout << "Data Produk" << endl;
+            cout << "Jenis\t\t: ";
+            cin >> produk.jenis;
+            cout << "Harga\t\t: ";
+            cin >> produk.harga;
+            cout << "Stock\t\t: ";
+            cin >> produk.stok;
+            cout << endl;
+            insertProduk(P, createElemenProduk(produk));
+            break;
+        case 5: // Menampilkan produk
+            showProduk(P);
+            break;
+        case 6: // Program Selesai
+            cout << "Terima Kasih" << endl << endl;
+            cout << "Created by: " << endl;
+            cout << "1. Agung Laksono Putra (1303220113)" << endl;
+            cout << "2. Ahmad Rohman Nurrohim (1303220156)" << endl;
             cek = false;
             break;
         default:
-            cout << "Pilihan tidak tersedia" << endl;
+            cout << "Pilihan tidak tersedia" << endl << endl;
        }
     }
 }

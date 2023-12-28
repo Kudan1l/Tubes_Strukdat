@@ -39,7 +39,7 @@ void showAllKonsumen(ListKonsumen K) {
             i++;
         }
     } else {
-        cout << "Tidak Ada Konsumen";
+        cout << "Tidak Ada Konsumen" << endl << endl;
     }
 }
 
@@ -58,7 +58,51 @@ void searchKonsumen(ListKonsumen K, string ID) {
         Konsumen = next(Konsumen);
     }
      if (!cek) {
-        cout << "Konsumen Tidak Ditemukan" << endl;
+        cout << "Konsumen Tidak Ditemukan" << endl << endl;
+    }
+}
+
+void createListProduk(ListProduk &P) {
+    first(P) = NULL;
+}
+
+adr_produk createElemenProduk(infoProduk x) {
+    adr_produk P = new elemenProduk;
+    info(P) = x;
+    next(P) = NULL;
+    return P;
+}
+
+void insertProduk(ListProduk &P, adr_produk addProduk) {
+    adr_produk Q = first(P);
+    if (first(P) == NULL) {
+        first(P) = addProduk;
+    } else {
+        while (next(Q) != NULL) {
+            Q = next(Q);
+        }
+        next(Q) = addProduk;
+    }
+}
+
+void showProduk(ListProduk P) {
+    adr_produk produk = first(P);
+    cout << "----------- List Produk -----------" << endl;
+    if (produk != NULL) {
+        while (produk != NULL) {
+            int i = 1;
+            cout << "* PRODUK " << i << endl;
+            cout << "Jenis\t: " << info(produk).jenis << endl;
+            cout << "Harga\t: " << info(produk).harga << endl;
+            cout << "Stock\t: " << info(produk).stok << endl;
+            cout << "Terjual\t: " << info(produk).terjual << endl;
+            cout << "Profit\t: " << info(produk).profit << endl;
+            produk = next(produk);
+            cout << endl;
+            i++;
+        }
+    } else {
+        cout << "Produk tidak tersedia" << endl << endl;;
     }
 }
 
@@ -68,6 +112,8 @@ void mainMenu() {
     cout << "1. Tambah Konsumen" << endl;
     cout << "2. Tampilkan Konsumen" << endl;
     cout << "3. Cari Konsumen" << endl;
-    cout << "4. Exit" << endl;
+    cout << "4. Tambah Produk" << endl;
+    cout << "5. Tampilkan Produk" << endl;
+    cout << "6. Exit" << endl;
     cout << "Masukan Pilihan: ";
 }
