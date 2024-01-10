@@ -1,11 +1,15 @@
 #ifndef TUBES_H_INCLUDED
 #define TUBES_H_INCLUDED
+
 #include <iostream>
 
 #define info(P) (P)->info
 #define next(P) (P)->next
 #define first(L) (L).first
-//#define connect(P) P->connectBelanjaan
+#define connect(P) (P)->connectBelanjaan
+#define belanjaan(P) (P)->Belanjaan
+#define jBeli(P) (P)->jumlahBeli
+#define tHarga(P) (P)->totalHarga
 
 using namespace std;
 
@@ -23,76 +27,67 @@ struct Produk {
     int harga;
 };
 
-struct Belanjaan {
-    string Jenis;
-    int pcs;
-    int harga;
-};
+typedef struct elmProduk *adrProduk;
 
-typedef struct elemenProduk *adr_produk;
+typedef struct elmKonsumen *adrKonsumen;
 
-typedef struct elemenKonsumen *adr_konsumen;
-
-typedef struct elemenBelanjaan *adr_belanjaan;
+typedef struct childProduk *adrChildBelanjaan;
 
 typedef Konsumen infoKonsumen;
 
 typedef Produk infoProduk;
 
-struct elemenKonsumen {
+struct elmKonsumen {
     infoKonsumen info;
-    adr_konsumen next;
+    adrKonsumen next;
+    adrChildBelanjaan Belanjaan;
 };
 
-struct elemenProduk {
+struct elmProduk {
     infoProduk info;
-    adr_produk next;
+    adrProduk next;
 };
 
-struct elemenBelanjaan {
-    infoProduk info;
-    adr_belanjaan next;
-};
 
-/*
+
 struct childProduk {
-    adr_belanjaan connectBelanjaan;
-    adr_childBelanjaan next;
+    adrProduk connectBelanjaan;
+    int jumlahBeli;
+    int totalHarga;
+    adrChildBelanjaan next;
 };
-*/
 
 struct ListKonsumen {
-    adr_konsumen first;
+    adrKonsumen first;
 };
 
 struct ListProduk {
-    adr_produk first;
+    adrProduk first;
 };
 
-
+// Konsumen
 void createListKonsumen(ListKonsumen &K);
-adr_konsumen createElemenKonsumen(infoKonsumen a);
-void insertLastKonsumen(ListKonsumen &K, adr_konsumen addKonsumen);
-void showAllKonsumen(ListKonsumen K);
-void searchKonsumen(ListKonsumen K, string ID);
+adrKonsumen createKonsumen(infoKonsumen infoK);
+void addKonsumen(ListKonsumen &K, adrKonsumen addK);
+void showKonsumen(ListKonsumen K);
+void hapusKonsumen(ListKonsumen &K, string idKonsumen);
 
+// Produk
 void createListProduk(ListProduk &P);
-adr_produk createElemenProduk(infoProduk x);
-void insertProduk(ListProduk &P, adr_produk addProduk);
+adrProduk createProduk(infoProduk infoP);
+void addProduk(ListProduk &P, adrProduk addP);
 void showProduk(ListProduk P);
+void hapusProduk(ListProduk &P, ListKonsumen &K, string jenisProdukDicari);
+// Child
+void addProdukBeli(ListKonsumen &K, ListProduk &P, string idKonsumen, string jenisProdukDicari, int jumlah);
+void hapusChild(ListKonsumen &K, string idKonsumen, string jenisProdukDicari);
 
-/*
-void ShowAllData_parent(ListKonsum K, ListProduk P);
-void DeleteData();
-void SearchData_KonsumenProduk(ListKonsum K, ListProduk P, string name, string kategori);
-void SearchDataBelanjaan();
-void TambahDataBelanjaan();
-void InsertDataBelanjaKeKonsumen();
-void ShowAllData();
-void SearchData_BelanjaKonsumen();
-void DeleteData_BelanjaKonsumen();
-void JumlahBelanjaKonsumen();
-*/
+// Search
+adrKonsumen cariKonsumen(ListKonsumen K, string idKonsumen);
+adrProduk cariProduk(ListProduk P, string jenisProdukDicari);
+void cariChild(ListKonsumen K, string jenisProdukDicari);
+void showOneKonsumen(ListKonsumen K, ListProduk P, string idKonsumen);
+void showOneProduk(ListProduk P, string jenisProdukDicari);
 
 void mainMenu();
 
